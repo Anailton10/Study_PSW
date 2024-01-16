@@ -63,4 +63,5 @@ def logar(request):
 
 
 def logout(request):
-    
+    auth.logout(request)
+    return redirect(reverse(logar))
