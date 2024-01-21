@@ -9,7 +9,7 @@
 {% endblock 'cabecalho' %}
 
 {% block 'conteudo' %}
-
+    {% include "partils/header.html" %}
     <div class="container">
         <br>
         <br>
@@ -97,24 +97,24 @@
                 <br>
                 <br>
                     
-                {% for flashcard in flashcards  %}
-                    <div class="box-new-flashcard" onclick="flip_card({{flashcard.id}})">
+                {% for flash in flashcards %}
+                    <div class="box-new-flashcard" onclick="flip_card({{flash.id}})">
                             <div class="flashcard ">
                                 
                                 <div class="flashcard-categoria">
-                                    {{flashcard.categoria}}
+                                    {{flash.categoria}}
                                 </div>
 
-                                <a href=""><i class='icone-exit bx bx-x-circle'></i></a>
+                                <a href="{% url "deletar_flashcard" flash.id %}"><i class='icone-exit bx bx-x-circle'></i></a>
                                 <br>
                                 <br>
                                 <div class="flashcard-box-item">
-                                    <p class="flashcard-item">{{flashcard.pergunta}} ?</p>
+                                    <p class="flashcard-item">{{flash.pergunta}} ?</p>
                                 </div>
                                 
                             </div>
-                            <div class="resposta-flashcard" id="{{flashcard.id}}">
-                                {{flashcard.resposta}}
+                            <div class="resposta-flashcard" id="{{flash.id}}">
+                                {{flash.resposta}}
                             </div>
                         </div>
                         <br>
@@ -123,20 +123,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-
-        function flip_card(id){
-            card = document.getElementById(id)
-            
-
-            if(card.style.display == 'none' || card.style.display == '' ){
-                card.style.display = 'block'
-            }else{
-                card.style.display = 'none'
-            }
-        }
-
-    </script>
+    <script src="{% static 'flashcard/js/flashcard.js' %}"></script>
     
 {% endblock 'conteudo' %}
