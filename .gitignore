@@ -143,3 +143,5 @@ GitHub.sublime-settings
 .history
 .mypy_cache
 
+# media file
+media
